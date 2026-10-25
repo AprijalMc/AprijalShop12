@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AprijalSHOP — Marketplace Akun Game</title>
+  <meta name="description" content="AprijalSHOP — marketplace jual beli akun game dengan katalog modern.">
+  
+
+  <link rel="icon" type="image/png" href="/Img/faveicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">🔥 Promo launching AprijalSHOP — Gratis biaya listing untuk penjual baru</div>
+
+  <!-- //logo jall -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">A</span>
+        <span>Aprijal<span>SHOP</span></span>
+      </a>
+      <nav>
+        <a href="#home">Beranda</a>
+        <a href="#katalog">Katalog</a>
+        <a href="#cara">Cara Kerja</a>
+        <a href="#jual">Jual Akun</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Keranjang" onclick="openCart()">🛒<b id="cartCount">0</b></button>
+        <button class="btn btn-outline" onclick="openModal('loginModal')">Masuk</button>
+        <button class="btn btn-primary" onclick="openModal('registerModal')">Daftar</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">MARKETPLACE AKUN GAME #1 VERSI DEMO</div>
+          <h1>Temukan akun game<br><span>impianmu.</span></h1>
+          <p class="hero-copy">Cari akun game favoritmu dengan lebih mudah. Bandingkan harga, lihat detail akun, dan siapkan transaksi dengan tampilan marketplace yang simpel.</p>
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="heroSearch" placeholder="Cari Mobile Legends, Free Fire, Valorant..." oninput="filterProducts()">
+            <button onclick="filterProducts()">Cari</button>
+          </div>
+          <div class="trust-row">
+            <span>✓ Listing terverifikasi</span>
+            <span>✓ Dukungan transaksi</span>
+            <span>✓ Tampilan transparan</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-glow"></div>
+          <div class="featured-label">⭐ AKUN UNGGULAN</div>
+
+          <!-- <div class="game-cover ml">MOBILE<br><strong>LEGENDS</strong></div> -->
+          <div class="game-cover ml"><br><strong></strong></div>
+
+          <div class="featured-info">
+            <div>
+              <small>Epic account</small>
+              <h3>MLBB — Mythic Glory</h3>
+            </div>
+            <strong>Rp 1.250.000</strong>
+          </div>
+          <button class="btn btn-white full" onclick="showToast('Demo: detail akun dibuka')">Lihat Akun</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories">
+      <div class="container">
+        <div class="section-head"><div><p class="kicker">JELAJAHI</p><h2>Kategori Game</h2></div><a href="#katalog">Lihat semua →</a></div>
+        <div class="category-grid">
+          <button onclick="chooseCategory('Mobile Legends')"><span class="cat-icon ml-icon">ML</span><b>Mobile Legends</b><small>128 akun</small></button>
+          <button onclick="chooseCategory('Free Fire')"><span class="cat-icon ff-icon">FF</span><b>Free Fire</b><small>96 akun</small></button>
+          <button onclick="chooseCategory('PUBG Mobile')"><span class="cat-icon pubg-icon">P</span><b>PUBG Mobile</b><small>74 akun</small></button>
+          <button onclick="chooseCategory('Valorant')"><span class="cat-icon val-icon">V</span><b>Valorant</b><small>51 akun</small></button>
+          <button onclick="chooseCategory('Genshin Impact')"><span class="cat-icon gi-icon">GI</span><b>Genshin Impact</b><small>42 akun</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products" id="katalog">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="kicker">PILIHAN TERBARU</p><h2>Akun Terpopuler</h2></div>
+          <div class="filters">
+            <button class="filter active" data-cat="Semua" onclick="setCategory('Semua')">Semua</button>
+            <button class="filter" data-cat="Mobile Legends" onclick="setCategory('Mobile Legends')">MLBB</button>
+            <button class="filter" data-cat="Free Fire" onclick="setCategory('Free Fire')">Free Fire</button>
+            <button class="filter" data-cat="Valorant" onclick="setCategory('Valorant')">Valorant</button>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="section products" id="myListings">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="kicker">POSTINGAN SAYA</p><h2>Jualan yang saya unggah</h2></div>
+        </div>
+        <div class="product-grid" id="myListingsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section how" id="cara">
+      <div class="container">
+        <div class="section-head centered"><div><p class="kicker">MUDAH & JELAS</p><h2>Bagaimana cara kerja?</h2><p>Alur sederhana untuk pembeli dan penjual.</p></div></div>
+        <div class="steps">
+          <div class="step"><i>01</i><h3>Cari akun</h3><p>Pilih game dan gunakan filter untuk menemukan akun yang sesuai.</p></div>
+          <div class="step"><i>02</i><h3>Periksa detail</h3><p>Pastikan data, rank, item, server, dan deskripsi akun sesuai.</p></div>
+          <div class="step"><i>03</i><h3>Transaksi</h3><p>Checkout melalui alur pembayaran yang tersedia di marketplace.</p></div>
+          <div class="step"><i>04</i><h3>Serah terima</h3><p>Ikuti prosedur serah-terima dan simpan bukti transaksi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seller" id="jual">
+      <div class="container seller-box">
+        <div><p class="kicker">UNTUK PENJUAL</p><h2>Punya akun yang ingin dijual?</h2><p>Buat listing, tentukan harga, lalu kelola penjualan dari dashboard AprijalSHOP.</p></div>
+        <button class="btn btn-white" onclick="openModal('sellerModal')">Mulai Jual Akun →</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><a class="brand" href="#"><span class="brand-mark">A</span><span>Aprijal<span>SHOP</span></span></a><p>Marketplace akun game dengan pengalaman belanja yang sederhana.</p></div>
+      <div><h4>Marketplace</h4><a href="#katalog">Katalog</a><a href="#jual">Jual Akun</a><a href="#cara">Cara Kerja</a></div>
+      <div><h4>Bantuan</h4><a href="#">Pusat Bantuan</a><a href="#">Keamanan</a><a href="#">Kontak</a></div>
+      <div><h4>Legal</h4><a href="#">Syarat & Ketentuan</a><a href="#">Kebijakan Privasi</a></div>
+    </div>
+    <div class="container copyright">© 2026 AprijalSHOP. Demo frontend — pembayaran dan backend belum terhubung.</div>
+  </footer>
+
+  <div class="modal-wrap" id="loginModal"><div class="modal"><button class="close" onclick="closeModal('loginModal')">×</button><p class="kicker">SELAMAT DATANG</p><h2>Masuk ke AprijalSHOP</h2><input placeholder="Email"><input type="password" placeholder="Password"><button class="btn btn-primary full" onclick="fakeSubmit('loginModal')">Masuk</button><p class="modal-note">Demo frontend. Belum terhubung database.</p></div></div>
+  <div class="modal-wrap" id="registerModal"><div class="modal"><button class="close" onclick="closeModal('registerModal')">×</button><p class="kicker">BUAT AKUN</p><h2>Daftar sekarang</h2><input placeholder="Nama lengkap"><input placeholder="Email"><input type="password" placeholder="Password"><button class="btn btn-primary full" onclick="fakeSubmit('registerModal')">Daftar</button><p class="modal-note">Demo frontend. Belum terhubung database.</p></div></div>
+  <div class="modal-wrap" id="sellerModal"><div class="modal"><button class="close" onclick="closeModal('sellerModal')">×</button><p class="kicker">JUAL AKUN</p><h2>Buat listing baru</h2><select id="listingGame"><option>Mobile Legends</option><option>Free Fire</option><option>PUBG Mobile</option><option>Valorant</option></select><input id="listingTitle" placeholder="Judul listing"><input id="listingPrice" type="number" min="0" step="1000" placeholder="Harga (Rp)"><textarea id="listingDesc" placeholder="Deskripsi akun"></textarea><button class="btn btn-primary full" onclick="submitSellerListing()">Publikasikan Listing</button><p class="modal-note">Data tersimpan di browser dan bisa dihapus kembali.</p></div></div>
+
+  <div class="cart-drawer" id="cartDrawer"><div class="cart-head"><h3>Keranjang</h3><button class="close" onclick="closeCart()">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-bottom"><div><span>Total</span><b id="cartTotal">Rp 0</b></div><button class="btn btn-primary full" onclick="showToast('Demo checkout: payment gateway belum terhubung')">Checkout</button></div></div>
+  <div class="toast" id="toast"></div>
+  
+  <a
+    href="https://wa.me/6288809066771"
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat WhatsApp AprijalSHOP"
+    title="Hubungi kami lewat WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor" d="M16 .8A15 15 0 0 0 3.1 23.5L1 31l7.7-2A15.1 15.1 0 1 0 16 .8Zm0 27.5c-2.4 0-4.7-.7-6.7-2l-.5-.3-4.5 1.2 1.2-4.4-.3-.5A12.4 12.4 0 1 1 16 28.3Zm6.8-9.3c-.4-.2-2.3-1.2-2.7-1.3-.4-.2-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3s1.4 3.8 1.6 4.1c.2.3 2.8 4.3 6.7 5.9.9.4 1.7.6 2.3.7 1 .3 1.9.2 2.6.1.8-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5Z"/>
+    </svg>
+    <span class="wa-tooltip">Chat kami</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
